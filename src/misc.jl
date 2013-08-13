@@ -8,10 +8,10 @@ immutable Homocount{I}
 end
 
 homocount(itr) = Homocount(itr)
-start(h::Homocount) = (1, start(h.itr))
+start(h::Homocount) = start(h.itr)
 
-function next(h::Homocount, state)
-    u, s = next(h.itr, state[2])
+function next(h::Homocount, s)
+    u, s = next(h.itr, s)
     c = 1
     while !done(h.itr, s)
         v, t = next(h.itr, s)
@@ -21,7 +21,7 @@ function next(h::Homocount, state)
         c += 1
         s = t
     end
-    ((u, c), (state[1] + 1, state[2] + c))
+    ((u, c), s)
 end
 
-done(h::Homocount, s) = done(h.itr, s[2])
+done(h::Homocount, s) = done(h.itr, s)
