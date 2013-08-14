@@ -37,7 +37,7 @@ function next(p::Mutagenize, state)
     if n < length(errors)
         n = int(round(rand(errors[n + 1])))
     else
-        n = int(round(rand(Normal(n, 0.03494 + n * 0.0685))))
+        n = int(round(rand(Normal(n, 0.03494 + n * 0.06856))))
     end
     body = repeat(c, n)
     # if we're at the end, then include potential terminal insertion
